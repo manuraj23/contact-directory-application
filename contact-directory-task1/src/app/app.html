@@ -1,0 +1,41 @@
+<div class="main">
+<div class="contact-form">
+
+  <h1>Add Contact</h1>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    
+    <br>
+    <input type="text" class="form-control" placeholder="Enter name here" formControlName="name" />
+    <br>
+    <select formControlName="countrycode" class="form-select">
+      <option value="">Select country code</option>
+      @for(code of countryCodes; track code){
+        <option value="{{code.dial_code}}">{{code.dial_code}}({{code.name}})</option>
+      }
+    </select>
+    <input type="number" class="form-control" placeholder="phone-number" formControlName="phone"  >
+    <br>
+    <button class="btn btn-dark">Add Contact</button>
+  </form>
+
+</div>
+
+
+<div class="search-form">
+    <h1>Search Contact</h1>
+     <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <br>
+        <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
+        <br>
+        <button class="btn btn-dark">Search contact</button>
+     </form>
+
+     @for(search of searchedcontact; track search){
+      <div class="result">
+      <h2>{{search['name']}}</h2>
+      <h3>{{search['code']}} {{search['phone']}}</h3>
+      </div>
+     }
+
+</div>
+</div>
