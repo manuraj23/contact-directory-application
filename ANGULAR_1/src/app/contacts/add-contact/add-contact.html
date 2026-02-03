@@ -1,0 +1,45 @@
+<h2>Add Contact</h2>
+
+<form #contactForm="ngForm" (ngSubmit)="addContact(contactForm)">
+
+
+  <!-- Name -->
+  <input
+  type="text"
+  placeholder="Name"
+  [(ngModel)]="contact.name"
+  name="name"
+  required
+/>
+
+
+  <!-- Country Code Dropdown -->
+  <select
+  [(ngModel)]="contact.countryCode"
+  name="countryCode"
+  required
+>
+  <option value="">Select Country</option>
+  <option *ngFor="let country of countryCodes"
+          [value]="country.dial_code">
+    {{ country.name }} ({{ country.dial_code }})
+  </option>
+</select>
+
+
+  <!-- Phone -->
+  <input
+  type="number"
+  placeholder="Phone Number"
+  [(ngModel)]="contact.phone"
+  name="phone"
+  required
+/>
+
+
+  <button type="submit" [disabled]="contactForm.invalid">
+  Add Contact
+</button>
+
+</form>
+

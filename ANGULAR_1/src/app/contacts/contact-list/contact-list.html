@@ -1,0 +1,23 @@
+<h2>Contact List</h2>
+
+<!-- Search box -->
+<input
+  type="text"
+  placeholder="Search contacts..."
+  [(ngModel)]="searchText"
+  (input)="onSearch()"
+/>
+
+<!-- No contacts message -->
+<p *ngIf="contacts.length === 0">
+  No contacts found.
+</p>
+
+<!-- Contact list -->
+<ul>
+  <li *ngFor="let contact of contacts">
+    <strong>{{ contact.name }}</strong><br />
+    {{ contact.countryCode }} {{ contact.phone }}
+  </li>
+</ul>
+

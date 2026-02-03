@@ -1,0 +1,17 @@
+input {
+  width: 300px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+ padding: 10px;
+  margin-bottom: 6px;
+  border-radius: 4px;
+  background-color: #f4f6f8;
+}
