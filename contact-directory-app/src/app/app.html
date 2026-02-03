@@ -1,1 +1,65 @@
-<h1>First Page</h1>
+<h1 class="text-center font-bold text-3xl">Contacts Directory</h1>
+
+<div class="w-full flex flex-col justify-center items-center">
+  <form
+    [formGroup]="contactForm"
+    class="w-1/2 flex flex-col"
+    (ngSubmit)="onSubmit()"
+  >
+    <!-- Name input -->
+    <input
+      type="text"
+      required
+      formControlName="contactName"
+      placeholder="Enter the Name"
+      class="border-2 mt-6 py-1 px-2 rounded-lg"
+    />
+    @if (contactName?.invalid && (contactName?.touched || contactName?.dirty)) {
+      <div class="text-xs text-red-500 ml-3">* Provide Valid data</div>
+    }
+
+    <!-- select country code -->
+    <select
+      name="counCode"
+      id="counCode"
+      required
+      formControlName="counCode"
+      class="border-2 mt-6 py-1 px-2 rounded-lg"
+    >
+      <option value="" disabled>Select a country code</option>
+
+      @for (code of countryCodes; track $index) {
+        <option [value]="code.counCode">{{ code.counName }}   ({{ code.counCode }})</option>
+      }
+    </select>
+
+    <!-- enter contact number -->
+    <input
+      type="text"
+      required
+      formControlName="contactNum"
+      placeholder="Enter the Contact number"
+      class="border-2 mt-6 py-1 px-2 rounded-lg"
+    />
+    @if (contactNum?.invalid && (contactNum?.touched || contactNum?.dirty)) {
+      <div class="text-xs text-red-500 ml-3">* Provide Valid data</div>
+    }
+
+    <!-- CRUD buttons -->
+    <div class="mt-6">
+      <button
+        type="button"
+        (click)="createContact()"
+        [disabled]="contactName?.invalid || contactNum?.invalid || counCode?.invalid"
+        class="px-3 py-2 bg-green-600 text-white mr-4 rounded-lg hover:bg-green-700 font-bold"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+  <div class="grid grid-cols-3 gap-3 mt-10">
+    @for (contactData of filteredContacts; track $index) {
+      <app-contact-card [contactData]="contactData" />
+    }
+  </div>
+</div>
