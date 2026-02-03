@@ -1,0 +1,27 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 9px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.section {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background: #f9f9f9;
+}
+
+.add { 
+    background: #eef7ff; 
+}
+
+.search { 
+    background: #f5fff0; 
+}
+
+h2 {
+  margin-top: 0;
+}

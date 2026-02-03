@@ -1,0 +1,55 @@
+/* Container for the search inputs */
+.search-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* space between inputs */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+.search-box label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Input fields */
+.search-box input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 180px; /* fixed width for alignment */
+}
+
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+}
+
+/* Table header */
+table th {
+  background-color: #7cce503b;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Table rows */
+table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Row hover effect */
+table tr:hover {
+  background-color: #373a350e;
+}
+
+div {
+  color: #666;
+  margin-top: 10px;
+}

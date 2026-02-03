@@ -1,0 +1,45 @@
+form {
+  gap: 10px;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #549ddc56;
+  font-family: Arial, sans-serif;
+}
+
+form label {
+  margin: 0;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form select {
+  width: 150px;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  padding: 8px 15px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+form div {
+  font-size: 14px;
+  color: #666;
+  margin-left: 5px;
+}

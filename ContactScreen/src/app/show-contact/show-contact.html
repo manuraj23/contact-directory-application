@@ -1,0 +1,37 @@
+<div class="search-box">
+  <label>Search by Name:</label>
+  <input type="text" [(ngModel)]="searchName" placeholder="Enter name" />
+  <label>Search by Phone:</label>
+  <input type="text" [(ngModel)]="searchPhone" placeholder="Enter phone number" />
+</div>
+
+@if(filteredContacts.length === 0){
+  <div>No contacts match your search</div>
+}
+<br>
+@if(filteredContacts.length > 0){
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Country Code</th>
+         <th>Actions</th> 
+      </tr>
+    </thead>
+    <tbody>
+      @for(c of filteredContacts; track c){
+        <tr>
+          <td>{{c.name}}</td>
+          <td>{{c.phone}}</td>
+          <td>{{c.country}}</td>
+          <td>
+            <button type="button" (click)="contactService.deleteContact($index)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
