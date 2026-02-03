@@ -1,0 +1,50 @@
+import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import { JsonPipe } from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
+import { Contact } from '../view-contact/contactinterface';
+
+
+@Component({
+  selector: 'app-add-contact',
+  imports: [ReactiveFormsModule, JsonPipe, MatInputModule, MatButtonModule, MatSelectModule],
+  templateUrl: './add-contact.html',
+  styleUrl: './add-contact.css',
+})
+export class AddContact implements OnInit {
+
+  contactForm! : FormGroup;
+
+  constructor(private fb : FormBuilder) {}
+
+  ngOnInit() {
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      countryCode: ['', [Validators.required]],
+      contactNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+    });
+  }
+
+  AddContact() {
+    if(this.contactForm.invalid) {
+      return;
+    }
+
+    const newContact : Contact = this.contactForm.value;
+
+    const storedContacts = localStorage.getItem('contacts');
+    const contacts = storedContacts ? JSON.parse(storedContacts) : [];
+
+    contacts.push(newContact);
+
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+
+    this.contactForm.reset({
+      name: '',
+      countryCode: null,
+      contactNumber: '',
+    });
+  }
+}
