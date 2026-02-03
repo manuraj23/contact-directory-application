@@ -1,0 +1,30 @@
+<p>Booking Form</p>
+
+{{contactForm.value | json}}
+
+<form class="example-form" [formGroup]="contactForm" (ngSubmit)="AddContact()">
+    <mat-form-field class="example-full-width">
+        <mat-label>Contact Name</mat-label>
+        <input type="text" matInput formControlName="name" placeholder="Contact Name">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Country Code</mat-label>
+        <mat-select formControlName="countryCode">
+            
+            <mat-option value="+91">India</mat-option>
+            <mat-option value="+1">USA</mat-option>
+            <mat-option value="+44">UK</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Contact Number</mat-label>
+        <input type="text" matInput formControlName="contactNumber" placeholder="Contact Number">
+    </mat-form-field>
+
+    <div>
+        <button matButton="filled" type="submit">Add Contact</button>
+    </div>
+
+</form>
