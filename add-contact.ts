@@ -30,7 +30,7 @@ export class AddContact implements OnInit {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       countryCode: ['', [Validators.required]],
-      contactNumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      contactNumber: ['', [Validators.required, Validators.minLength(10), Validators.pattern('^[0-9]{10}$')]],
     });
 
     this.loadCountryCodes();
@@ -56,10 +56,14 @@ export class AddContact implements OnInit {
 
     localStorage.setItem('contacts', JSON.stringify(contacts));
 
+    alert("Contact Saved Successfully");
+
     this.contactForm.reset({
       name: '',
       countryCode: null,
       contactNumber: '',
     });
+
+
   }
 }

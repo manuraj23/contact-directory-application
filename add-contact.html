@@ -20,10 +20,14 @@
     <mat-form-field class="example-full-width">
         <mat-label>Contact Number</mat-label>
         <input type="text" matInput formControlName="contactNumber" placeholder="Contact Number">
+        
+        <mat-error *ngIf="contactForm.get('contactNumber')?.hasError('pattern')">
+            Phone number must be of 10 charcters and all characters must be number.
+        </mat-error>
     </mat-form-field>
 
     <div>
-        <button matButton="filled" type="submit">Add Contact</button>
+        <button [disabled]="contactForm.invalid" matButton="filled" type="submit">Add Contact</button>
     </div>
 
 </form>
