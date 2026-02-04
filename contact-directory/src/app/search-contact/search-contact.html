@@ -2,8 +2,10 @@
     <h3>Search</h3> 
     <input type="text" [(ngModel)]="searchText" (input)="onSearch()">
 </div>
+
+<h3 *ngIf="!searchText">All Contacts</h3>
+<h3 *ngIf="searchText">Contacts</h3>
 <div class="viewcontacts">
-    <h3>Contacts</h3>
     <div *ngFor = 'let contact of contactList' class="listcontacts">
         <p>{{contact.name}}</p>
         <p>{{contact.countryCode}} {{contact.phoneNo}}</p>
