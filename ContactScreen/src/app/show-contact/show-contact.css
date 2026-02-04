@@ -45,3 +45,15 @@ div {
   color: #666;
   margin-top: 10px;
 }
+button {
+  padding: 8px 15px;
+  font-size: 12px;
+  background-color: #e61414ce;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+ 

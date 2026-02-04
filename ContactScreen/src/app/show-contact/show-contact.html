@@ -15,7 +15,7 @@
       <tr>
         <th>Name</th>
         <th>Phone</th>
-        <th>Country Code</th>
+        <th>Code + Country</th>
          <th>Actions</th> 
       </tr>
     </thead>
@@ -26,7 +26,7 @@
           <td>{{c.phone}}</td>
           <td>{{c.country}}</td>
           <td>
-            <button type="button" (click)="contactService.deleteContact($index)">
+            <button type="button" (click)="contactService.deleteContact(filteredContacts.indexOf(c))">
               Delete
             </button>
           </td>

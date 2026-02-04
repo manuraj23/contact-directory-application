@@ -1,15 +1,15 @@
 <form (ngSubmit)="addContact()" class="contact-form">
   <label>Name:</label>
-  <input type="text" [(ngModel)]="name" name="name" required />
-  <label>Country Code:</label>
+  <input type="text" placeholder="Enter name" [(ngModel)]="name" name="name" required />
+  <label>Country:</label>
   <div *ngIf="loading">Loading countries...</div>
-  <select *ngIf="!loading" [(ngModel)]="selectedCountryCode" name="countryCode" required>
+  <select *ngIf="!loading" [(ngModel)]="selectedCountry" name="country" required>
     <option value="">Select Country</option>
-    <option *ngFor="let c of countries" [value]="c.dialCode">
-      {{ c.name }} - ({{ c.dialCode }})
+    <option *ngFor="let c of countries" [value]="c.name">
+      {{ c.name }} ({{ c.dialCode }})
     </option>
   </select>
   <label>Phone:</label>
-  <input type="text" [(ngModel)]="phone" name="phone" required />
+  <input type="text" placeholder="Enter phone number" [(ngModel)]="phone" name="phone" required />
   <button type="submit">Add Contact</button>
 </form>

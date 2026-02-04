@@ -23,21 +23,21 @@ export class ShowContact {
 
     let filtered = allContacts;
 
-    // Filter by name if input exists
+    // by name 
     if (this.searchName) {
       filtered = filtered.filter(c =>
         c.name.toLowerCase().includes(this.searchName.toLowerCase())
       );
     }
 
-    // Filter by phone if input exists
+    // by phone 
     if (this.searchPhone) {
       filtered = filtered.filter(c =>
         c.phone.includes(this.searchPhone)
       );
     }
 
-    // Sort alphabetically by name
+    
     filtered.sort((a, b) => a.name.localeCompare(b.name));
 
     return filtered;
