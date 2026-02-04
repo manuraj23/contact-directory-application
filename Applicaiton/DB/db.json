@@ -1,0 +1,19 @@
+{
+    "users":[
+        {
+            "name":"Tony Stark",
+            "email":"tony.stark@starkindustries.com",
+            "age":48
+        },
+        {
+            "name":"Steve Rogers",
+            "email":"steve.rogers@avengers.com",
+            "age":101
+        },
+        {
+            "name":"Natasha Romanoff",
+            "email":"natasha.romanoff@avengers.com",
+            "age":35
+        }
+    ]
+}
