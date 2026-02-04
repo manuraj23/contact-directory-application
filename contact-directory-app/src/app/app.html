@@ -29,7 +29,7 @@
       <option value="" disabled>Select a country code</option>
 
       @for (code of countryCodes; track $index) {
-        <option [value]="code.counCode">{{ code.counName }}   ({{ code.counCode }})</option>
+        <option [value]="code.counDialCode">{{ code.counName }}   ({{ code.counDialCode }})</option>
       }
     </select>
 
@@ -41,7 +41,7 @@
       placeholder="Enter the Contact number"
       class="border-2 mt-6 py-1 px-2 rounded-lg"
     />
-    @if (contactNum?.invalid && (contactNum?.touched || contactNum?.dirty)) {
+    @if ((!validNumber && contactNum?.touched) && (contactNum?.dirty || contactNum?.invalid)) {
       <div class="text-xs text-red-500 ml-3">* Provide Valid data</div>
     }
 
@@ -50,7 +50,7 @@
       <button
         type="button"
         (click)="createContact()"
-        [disabled]="contactName?.invalid || contactNum?.invalid || counCode?.invalid"
+        [disabled]="contactName?.invalid || contactNum?.invalid || counCode?.invalid || validNumber"
         class="px-3 py-2 bg-green-600 text-white mr-4 rounded-lg hover:bg-green-700 font-bold"
       >
         Create

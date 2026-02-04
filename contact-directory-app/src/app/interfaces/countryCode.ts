@@ -1,4 +1,5 @@
 export interface CountryCode{
     counName: string,
-    counCode: string
+    counDialCode: string,
+    counCode:string
 }
