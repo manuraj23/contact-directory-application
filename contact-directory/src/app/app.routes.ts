@@ -4,5 +4,5 @@ import { SearchContact } from './search-contact/search-contact';
 
 export const routes: Routes = [
     {path: "add-contact", component: AddContact},
-    {path: "search-contact", component: SearchContact},
+    {path: "", component: SearchContact},
 ];

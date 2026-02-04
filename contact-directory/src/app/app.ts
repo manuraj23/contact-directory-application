@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Navbar } from './navbar/navbar';
 import { Contacts } from './services/contacts';
+import { DummyContacts } from './data/dummy-contacts';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,10 @@ import { Contacts } from './services/contacts';
   styleUrl: './app.css'
 })
 export class App {
-  contactList : any
-  constructor(private contacts:Contacts){}
   
   ngOnInit(){
-    this.contacts.getContacts().subscribe((data:any)=>{
-      this.contactList = data;
-    })
+    if (!localStorage.getItem('contacts')) {
+      localStorage.setItem('contacts', JSON.stringify(DummyContacts));
+    }
   }
 }

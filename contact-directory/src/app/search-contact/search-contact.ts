@@ -1,19 +1,36 @@
 import { Component } from '@angular/core';
 import { Contacts } from '../services/contacts';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Contact } from '../model/contact.model';
 
 @Component({
   selector: 'app-search-contact',
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './search-contact.html',
   styleUrl: './search-contact.css',
 })
 export class SearchContact {
-  contactList : any
+  searchText = '';
+  contactList: Contact[] = [];
+
   constructor(private contacts:Contacts){}
-  
+
   ngOnInit(){
-    this.contacts.getContacts().subscribe((data:any)=>{
-      this.contactList = data;
-    })
+    this.showAll();
   }
-}
+
+  showAll(){
+    this.searchText = '';
+    this.contactList = this.contacts.getContacts();
+  }
+
+  onSearch() {
+    if (!this.searchText.trim()) {
+      this.showAll();
+    } else {
+      this.contactList = this.contacts.searchContacts(this.searchText);
+    }
+  }
+  
+  }

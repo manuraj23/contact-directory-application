@@ -1,28 +1,24 @@
 <h3>Add Contacts</h3>
 
 <div class="form">
-    <form>
+    <form #contactForm="ngForm" (ngSubmit)="save(contactForm, contactForm.value)">
         <div class="form-items">
             <label for="Name">Name: </label>
-            <input id="Name" type="text">
+            <input id="Name" type="text" name="name" ngModel>
         </div>
         <div class="form-items">
             <label for="PhoneNo">Phone Number: </label>
-            <select id="PhoneNo" type="number">
+            <select id="PhoneNo" type="number" name="countryCode" ngModel>
                 <option></option>
                 @for(code of countryCodeList; track code.dial_code){
                     <option>{{code.dial_code}}</option>
                 }
             </select>
-            <input id="PhoneNo" type="number">
-        </div>
-        <div class="form-items">
-            <label for="Email">Email</label>
-            <input id="Email" type="email">
+            <input id="PhoneNo" name="phoneNo" ngModel>
         </div>
         <div class="save-reset-button">
-            <button>Save</button>
-            <button>Reset</button>
+            <button type="submit">Save</button>
+            <button type="button" (click)="reset(contactForm)">Reset</button>
         </div>
     </form>
 </div>

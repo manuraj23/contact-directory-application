@@ -1,14 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Contact } from '../model/contact.model';
+
+const STORAGE_KEY = "contacts";
 
 @Injectable({
   providedIn: 'root',
 })
-export class Contacts {
-  constructor(private http:HttpClient){}
 
-  getContacts(){
-    const url="http://localhost:3000/contacts";
-    return this.http.get(url);
+export class Contacts {
+  
+  getContacts(): Contact[] {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  }
+
+  addContact(contact: Contact) {
+    const contacts = this.getContacts();
+    contacts.push(contact);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
+  }
+
+   searchContacts(term: string): Contact[] {
+    const lower = term.toLowerCase();
+
+    return this.getContacts().filter(c =>
+      c.name.toLowerCase().includes(lower)
+    );
   }
 }

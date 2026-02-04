@@ -1,10 +1,11 @@
-<h3>Search</h3>
-<input name="search">
-<div>
-    @for(contact of contactList; track contact.id){
+<div class="search">
+    <h3>Search</h3> 
+    <input type="text" [(ngModel)]="searchText" (input)="onSearch()">
+</div>
+<div class="viewcontacts">
+    <h3>Contacts</h3>
+    <div *ngFor = 'let contact of contactList' class="listcontacts">
         <p>{{contact.name}}</p>
         <p>{{contact.countryCode}} {{contact.phoneNo}}</p>
-        <p>{{contact.email}}</p>
-        <hr>
-    }
+    </div>
 </div>

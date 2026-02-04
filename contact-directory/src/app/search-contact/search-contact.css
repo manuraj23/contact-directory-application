@@ -1,0 +1,19 @@
+.search{
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    justify-content: baseline;
+    padding: 10px;
+}
+
+.viewcontacts{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.listcontacts{
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid gainsboro;
+}
