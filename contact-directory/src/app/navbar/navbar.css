@@ -1,0 +1,19 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    position: sticky;
+    height: 40px;
+    width:auto;
+    align-items: center;
+    border-bottom: 2px solid darkmagenta;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+}
+
+li{
+    padding: 10px;
+}

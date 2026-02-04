@@ -1,0 +1,28 @@
+<h3>Add Contacts</h3>
+
+<div class="form">
+    <form>
+        <div class="form-items">
+            <label for="Name">Name: </label>
+            <input id="Name" type="text">
+        </div>
+        <div class="form-items">
+            <label for="PhoneNo">Phone Number: </label>
+            <select id="PhoneNo" type="number">
+                <option></option>
+                @for(code of countryCodeList; track code.dial_code){
+                    <option>{{code.dial_code}}</option>
+                }
+            </select>
+            <input id="PhoneNo" type="number">
+        </div>
+        <div class="form-items">
+            <label for="Email">Email</label>
+            <input id="Email" type="email">
+        </div>
+        <div class="save-reset-button">
+            <button>Save</button>
+            <button>Reset</button>
+        </div>
+    </form>
+</div>

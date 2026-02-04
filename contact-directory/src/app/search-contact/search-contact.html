@@ -1,0 +1,10 @@
+<h3>Search</h3>
+<input name="search">
+<div>
+    @for(contact of contactList; track contact.id){
+        <p>{{contact.name}}</p>
+        <p>{{contact.countryCode}} {{contact.phoneNo}}</p>
+        <p>{{contact.email}}</p>
+        <hr>
+    }
+</div>
