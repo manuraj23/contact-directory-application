@@ -5,8 +5,21 @@
 
 <h1>Contact List</h1>
 
-<ul>
+<table border="1" width="100%" cellSpacing="0" cellPadding="8">
+    <tr>
+        <th>Name</th>
+        <th>Country Code</th>
+        <th>Phone Number</th>
+    </tr>
+    <tr *ngFor="let contact of filteredContacts">
+        <th>{{contact.name}}</th>
+        <th>{{contact.countryCode}}</th>
+        <th>{{contact.contactNumber}}</th>
+    </tr>
+</table>
+
+<!-- <ul>
     <li *ngFor="let contact of filteredContacts">
         {{contact.name}}
     </li>
-</ul>
+</ul> -->
