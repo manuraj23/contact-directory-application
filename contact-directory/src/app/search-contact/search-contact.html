@@ -1,13 +1,18 @@
-<div class="search">
-    <h3>Search</h3> 
-    <input type="text" [(ngModel)]="searchText" (input)="onSearch()">
-</div>
-
-<h3 *ngIf="!searchText">All Contacts</h3>
-<h3 *ngIf="searchText">Contacts</h3>
-<div class="viewcontacts">
-    <div *ngFor = 'let contact of contactList' class="listcontacts">
-        <p>{{contact.name}}</p>
-        <p>{{contact.countryCode}} {{contact.phoneNo}}</p>
+<div class="container">
+<div class="searchcontainer">
+    <div class="search">
+        <h3>Search</h3> 
+        <input type="text" [(ngModel)]="searchText" (input)="onSearch()">
     </div>
+    <div class="title">
+        <h3 *ngIf="!searchText">All Contacts</h3>
+        <h3 *ngIf="searchText">Contacts</h3>
+    </div>
+    <div class="viewcontacts">
+        <div *ngFor = 'let contact of contactList' class="listcontacts">
+            <p class="namestyle">{{contact.name}}</p>
+            <p class="numberstyle">{{contact.countryCode}} {{contact.phoneNo}}</p>
+        </div>
+    </div>
+</div>
 </div>
