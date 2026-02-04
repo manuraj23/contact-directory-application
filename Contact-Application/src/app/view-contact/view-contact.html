@@ -1,0 +1,20 @@
+<h2>View Contact</h2>
+
+<input
+  type="text"
+  placeholder="Search by name or number"
+  [(ngModel)]="searchText"
+  class="search-input"
+/>
+
+@if (filteredContacts.length === 0) {
+  <p>No contacts found</p>
+}
+
+@for (user of filteredContacts; track user.id) {
+  <div class="contact-card">
+    <h3>Name: {{ user.name }}</h3>
+    <p>Country Code: {{ user.countryCode }}</p>
+    <p>Mobile Number: {{ user.mobileNumber }}</p>
+  </div>
+}

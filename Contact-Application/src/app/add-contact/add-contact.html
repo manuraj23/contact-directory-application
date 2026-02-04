@@ -1,0 +1,10 @@
+<h2>Add Contact</h2>
+<div>
+    <input type="text" placeholder="Enter Name" name="name" [formControl]="name">
+    <br><br>
+    <input type="text" placeholder="Enter Country Code" name="countryCode" [formControl]="countryCode">
+    <br><br>
+    <input type="text" placeholder="Enter Phone Number" name="phoneNumber" [formControl]="phoneNumber">
+    <br><br>
+    <button (click)="addContact()">Add Contact</button>
+</div>
