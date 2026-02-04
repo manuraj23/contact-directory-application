@@ -12,29 +12,22 @@ export interface ContactModel {
 export class Contact {
 
   private storageKey = 'contacts';
-
-  // track contacts
   contactsSignal = signal<ContactModel[]>(this.getContacts());
 
-  getContacts(): ContactModel[] {
+  private getContacts(): ContactModel[] {
     const data = localStorage.getItem(this.storageKey);
     return data ? JSON.parse(data) : [];
   }
 
   saveContact(contact: ContactModel) {
-    const contacts = this.getContacts();
-    contacts.push(contact);
-    localStorage.setItem(this.storageKey, JSON.stringify(contacts));
-
-    // Update signal 
-    this.contactsSignal.set(contacts);
+    const updated = [...this.contactsSignal(), contact];
+    localStorage.setItem(this.storageKey, JSON.stringify(updated));
+    this.contactsSignal.set(updated);
   }
-  deleteContact(index: number) {
-  const contacts = this.getContacts();
-  contacts.splice(index, 1); // remove the contact
-  localStorage.setItem(this.storageKey, JSON.stringify(contacts));
 
-  this.contactsSignal.set(contacts);
-}
-
+  deleteContact(contact: ContactModel) {
+    const updated = this.contactsSignal().filter(c => c.phone !== contact.phone);
+    localStorage.setItem(this.storageKey, JSON.stringify(updated));
+    this.contactsSignal.set(updated);
+  }
 }

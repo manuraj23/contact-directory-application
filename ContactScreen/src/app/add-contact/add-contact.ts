@@ -79,7 +79,7 @@ export class AddContact implements OnInit {
       return;
     }
 
-    const duplicate = this.contactService.getContacts().some(c =>
+    const duplicate = this.contactService.contactsSignal().some(c =>
       c.name.toLowerCase() === this.name.toLowerCase() ||
       c.phone === this.phone
     );

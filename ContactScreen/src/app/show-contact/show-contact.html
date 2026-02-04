@@ -1,8 +1,13 @@
 <div class="search-box">
   <label>Search by Name:</label>
-  <input type="text" [(ngModel)]="searchName" placeholder="Enter name" />
+  <input type="text"
+         [(ngModel)]="searchName"
+         placeholder="Enter name" />
+
   <label>Search by Phone:</label>
-  <input type="text" [(ngModel)]="searchPhone" placeholder="Enter phone number" />
+  <input type="text"
+         [(ngModel)]="searchPhone"
+         placeholder="Enter phone number" />
 </div>
 
 @if(filteredContacts.length === 0){
@@ -16,9 +21,10 @@
         <th>Name</th>
         <th>Phone</th>
         <th>Code + Country</th>
-         <th>Actions</th> 
+        <th>Actions</th>
       </tr>
     </thead>
+
     <tbody>
       @for(c of filteredContacts; track c){
         <tr>
@@ -26,7 +32,7 @@
           <td>{{c.phone}}</td>
           <td>{{c.country}}</td>
           <td>
-            <button type="button" (click)="contactService.deleteContact(filteredContacts.indexOf(c))">
+            <button type="button" (click)="delete(c)">
               Delete
             </button>
           </td>

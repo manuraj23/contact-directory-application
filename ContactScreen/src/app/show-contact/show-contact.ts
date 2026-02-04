@@ -17,29 +17,28 @@ export class ShowContact {
 
   constructor(public contactService: Contact) {}
 
-  // Filter contacts only if user typed something
   get filteredContacts(): ContactModel[] {
+
     const allContacts = this.contactService.contactsSignal();
+    let filtered = [...allContacts]; // copy to avoid mutating signal array
 
-    let filtered = allContacts;
-
-    // by name 
     if (this.searchName) {
       filtered = filtered.filter(c =>
         c.name.toLowerCase().includes(this.searchName.toLowerCase())
       );
     }
 
-    // by phone 
     if (this.searchPhone) {
       filtered = filtered.filter(c =>
         c.phone.includes(this.searchPhone)
       );
     }
 
-    
     filtered.sort((a, b) => a.name.localeCompare(b.name));
-
     return filtered;
+  }
+
+  delete(contact: ContactModel) {
+    this.contactService.deleteContact(contact);
   }
 }
