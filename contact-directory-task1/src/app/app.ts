@@ -13,17 +13,19 @@ export class App {
 
 
   countryCodes:any[] = [];
-
+  
   contactForm=new FormGroup({
     name: new FormControl('', Validators.required),
     countrycode: new FormControl('', Validators.required),
-    phone: new FormControl('', [Validators.required, Validators.maxLength(10)])
+    phone: new FormControl('', [Validators.required,Validators.max(9999999999),Validators.min(1000000000)])
   })
   searchForm=new FormGroup({
     name: new FormControl()
   })
 
   searchedcontact=[];
+  contacts=[];
+  showall=false;
   constructor(private countryService: Contact) {}
 
 ngOnInit() {
@@ -56,13 +58,14 @@ onSubmit(){
   contacts.push(contact);
   localStorage.setItem('contacts', JSON.stringify(contacts));
   console.log("saved contact");
+  alert("contact saved");
   console.log(contacts);
 
   this.contactForm.reset();
 }
 
 onSearch(){
-  
+  this.showall=false;
   const searchname=this.searchForm.value.name||'';
   const storeddata=localStorage.getItem('contacts');
   let contacts= storeddata? JSON.parse(storeddata):[];
@@ -71,7 +74,7 @@ onSearch(){
   contact.name.toLowerCase().includes(searchname.toLowerCase())
 );
 console.log(result);
-if(!result){
+if(result.length==0){
   alert("contact not found");
 }
 else{
@@ -79,5 +82,12 @@ else{
 }
 
 this.searchForm.reset();
+}
+
+showAll(){
+  this.showall=true;
+  const storeddata=localStorage.getItem('contacts');
+  this.contacts= storeddata? JSON.parse(storeddata):[];
+  console.log(this.contacts);
 }
 }

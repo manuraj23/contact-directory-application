@@ -13,10 +13,11 @@
         <option value="{{code.dial_code}}">{{code.dial_code}}({{code.name}})</option>
       }
     </select>
-    <input type="number" class="form-control" placeholder="phone-number" formControlName="phone"  >
+    <input type="number" class="form-control" placeholder="phone-number" formControlName="phone"   max="9999999999"  min="1000000000" >
     <br>
     <button class="btn btn-dark">Add Contact</button>
   </form>
+
 
 </div>
 
@@ -29,13 +30,25 @@
         <br>
         <button class="btn btn-dark">Search contact</button>
      </form>
+     <br>
+     <button class="btn btn-dark" (click)="showAll()">Show all Contacts</button>
+     @if(showall===true){
+      @for(contact of contacts; track contact){
+      <div class="result">
+      <h2>{{contact['name']}}</h2>
+      <h3>{{contact['code']}} {{contact['phone']}}</h3>
+      </div>
+     }
+    }
 
+     @if(showall===false){   
      @for(search of searchedcontact; track search){
       <div class="result">
       <h2>{{search['name']}}</h2>
       <h3>{{search['code']}} {{search['phone']}}</h3>
       </div>
      }
+    }
 
 </div>
 </div>
