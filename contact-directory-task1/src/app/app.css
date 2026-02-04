@@ -1,5 +1,8 @@
 .main{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-top: 100px;
+}
+.contact-form{
+    width: 30%;
 }

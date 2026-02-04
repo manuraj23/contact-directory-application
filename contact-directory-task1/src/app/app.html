@@ -7,6 +7,7 @@
     <br>
     <input type="text" class="form-control" placeholder="Enter name here" formControlName="name" />
     <br>
+    <div style="display: flex;">
     <select formControlName="countrycode" class="form-select">
       <option value="">Select country code</option>
       @for(code of countryCodes; track code){
@@ -14,6 +15,7 @@
       }
     </select>
     <input type="number" class="form-control" placeholder="phone-number" formControlName="phone"   max="9999999999"  min="1000000000" >
+    </div>
     <br>
     <button class="btn btn-dark">Add Contact</button>
   </form>
