@@ -3,10 +3,11 @@ import { CountryCode } from '../services/country-code';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Contacts } from '../services/contacts';
 import { Contact } from '../model/contact.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-contact',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-contact.html',
   styleUrl: './add-contact.css',
 })

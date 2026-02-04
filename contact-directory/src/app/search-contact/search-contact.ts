@@ -21,7 +21,6 @@ export class SearchContact {
   }
 
   showAll(){
-    this.searchText = '';
     this.contactList = this.contacts.getContacts();
   }
 

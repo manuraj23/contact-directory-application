@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { Navbar } from './navbar/navbar';
-import { Contacts } from './services/contacts';
 import { DummyContacts } from './data/dummy-contacts';
 
 @Component({
