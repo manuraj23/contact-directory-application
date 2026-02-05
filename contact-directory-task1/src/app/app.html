@@ -9,9 +9,9 @@
     <br>
     <div style="display: flex;">
     <select formControlName="countrycode" class="form-select">
-      <option value="">Select country code</option>
+      <option [ngValue]="null" disabled selected>Select country code</option>
       @for(code of countryCodes; track code){
-        <option value="{{code.dial_code}}">{{code.dial_code}}({{code.name}})</option>
+        <option [ngValue]="code">{{code.dial_code}}({{code.name}})</option>
       }
     </select>
     <input type="number" class="form-control" placeholder="phone-number" formControlName="phone"   max="9999999999"  min="1000000000" >
@@ -38,7 +38,7 @@
       @for(contact of contacts; track contact){
       <div class="result">
       <ul>
-      <li>{{contact['name']}}</li>
+      <li>{{contact['name']}} ({{contact['countryName']}})</li>
       <li>{{contact['code']}} {{contact['phone']}}</li>
       </ul>
       </div>
@@ -49,7 +49,7 @@
      @for(search of searchedcontact; track search){
       <div class="result">
       <ul>
-      <li>{{search['name']}}</li>
+      <li>{{search['name']}} ({{search['countryName']}})</li>
       <li>{{search['code']}} {{search['phone']}}</li>
       </ul>
       </div>

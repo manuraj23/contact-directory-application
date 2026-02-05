@@ -2,6 +2,7 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Contact } from './service/contact';
+import phoneLengthData from '../app/countrylength.json';
 
 @Component({
   selector: 'app-root',
@@ -16,16 +17,18 @@ export class App {
   
   contactForm=new FormGroup({
     name: new FormControl('', Validators.required),
-    countrycode: new FormControl('', Validators.required),
-    phone: new FormControl('', [Validators.required,Validators.max(9999999999),Validators.min(1000000000)])
+    countrycode: new FormControl<any | null>(null, Validators.required),
+    phone: new FormControl('', Validators.required)
   })
   searchForm=new FormGroup({
-    name: new FormControl()
+    name: new FormControl('', Validators.required)
   })
 
   searchedcontact=[];
   contacts=[];
   showall=false;
+  phoneLengthByCountry: { [key: string]: number } = phoneLengthData;
+
   constructor(private countryService: Contact) {}
 
 ngOnInit() {
@@ -39,19 +42,36 @@ ngOnInit() {
     this.countryCodes=data;
     console.log(this.countryCodes);
   });
+
+  this.contactForm.get('countrycode')?.valueChanges.subscribe(country => {
+    if (country) {
+      this.applyPhoneValidation(country.name);
+    }
+  });
 }
 
 onSubmit(){
-  if(this.contactForm.invalid){
-    alert("Invalid Contact details");
+  if(!this.contactForm.value.name||!this.contactForm.value.countrycode||!this.contactForm.value.phone){
+    alert("Please fill complete form")
     return;
   }
   const formdata=this.contactForm.value;
   const contact={
     name: formdata.name,
-    code: formdata.countrycode,
+    code: formdata.countrycode?.dial_code,
+    countryName: formdata.countrycode?.name,
     phone: formdata.phone
   }
+
+
+  const countryName=contact.countryName;
+  const requiredLength=this.phoneLengthByCountry[countryName];
+  const phoneStr = formdata.phone?.toString();
+  if(requiredLength!==phoneStr?.length){
+    alert(`the phone number length for country ${countryName} is ${requiredLength}`);
+    return;
+  }
+
 
   const storeddata=localStorage.getItem('contacts');
   let contacts= storeddata? JSON.parse(storeddata):[];
@@ -66,6 +86,10 @@ onSubmit(){
 }
 
 onSearch(){
+  if(this.searchForm.invalid){
+    alert("please enter name");
+    return ;
+  }
   this.showall=false;
   const searchname=this.searchForm.value.name||'';
   const storeddata=localStorage.getItem('contacts');
@@ -91,4 +115,18 @@ showAll(){
   this.contacts= storeddata? JSON.parse(storeddata):[];
   console.log(this.contacts);
 }
+
+
+applyPhoneValidation(countryName: string) {
+  const phoneControl = this.contactForm.get('phone');
+  const length = this.phoneLengthByCountry[countryName];
+
+  phoneControl?.setValidators([
+    Validators.required,
+    Validators.pattern(`^[0-9]{${length}}$`)
+  ]);
+  
+  phoneControl?.updateValueAndValidity();
+}
+
 }
