@@ -5,15 +5,18 @@
         <form #contactForm="ngForm" (ngSubmit)="save(contactForm, contactForm.value)">
             <div class="form-items">
                 <label for="Name">Name: </label>
-                <input id="Name" type="text" name="name" ngModel required>
+                <input #name="ngModel" id="Name" type="text" name="name" ngModel required>
+                <span class="error" *ngIf="name.touched && name.invalid">* Name is required</span>
             </div>
             <div class="form-items">
                 <label for="PhoneNo">Phone Number: </label>
-                <select id="PhoneNo" type="number" name="countryCode" ngModel required>
+                <select #countrycode="ngModel" id="PhoneNo" type="number" name="countryCode" ngModel required>
                     <option></option>
                     <option *ngFor="let code of countryCodeList" [value]="code.dial_code">{{code.code}}  {{code.dial_code}}</option>
                 </select>
-                <input id="PhoneNo" name="phoneNo" ngModel required minlength="10">
+                <input #phoneno="ngModel" id="PhoneNo" name="phoneNo" ngModel required minlength="8" maxlength="12">
+                <span class="error" *ngIf="countrycode.touched && countrycode.invalid || phoneno.touched && phoneno.invalid ">* Country Code and Phone Number are required </span>
+                <span class="error" *ngIf="phoneExists">* Phone number already exists</span>
             </div>
             <div class="save-reset-button">
                 <button type="submit" [disabled]="contactForm.invalid">Save</button>

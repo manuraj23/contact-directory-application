@@ -8,6 +8,12 @@
     margin-top: 80px;
 }
 
+.error{
+    color: maroon;
+    background-color: rgb(242, 152, 152);
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
 .form{
     display:flex;

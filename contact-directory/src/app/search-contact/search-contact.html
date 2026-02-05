@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
 <div class="container">
 <div class="searchcontainer">
     <div class="search">
@@ -9,6 +7,7 @@
     <div class="title">
         <h3 *ngIf="!searchText">All Contacts</h3>
         <h3 *ngIf="searchText">Contacts</h3>
+        <button class="buttonstyle" (click)="sortToggle()"><i class="material-icons">sort</i></button>
     </div>
     <div class="viewcontacts">
         <div *ngFor = 'let contact of contactList' class="listcontacts">

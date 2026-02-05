@@ -11,6 +11,7 @@ import { Contact } from '../model/contact.model';
   styleUrl: './search-contact.css',
 })
 export class SearchContact {
+  sortOrder: 'asc' | 'desc' = 'asc';
   searchText = '';
   contactList: Contact[] = [];
 
@@ -21,7 +22,7 @@ export class SearchContact {
   }
 
   showAll(){
-    this.contactList = this.contacts.getContacts();
+    this.contactList = this.contacts.getContacts(this.sortOrder);
   }
 
   onSearch() {
@@ -34,6 +35,11 @@ export class SearchContact {
   
   delete(id: string) {
     this.contacts.deleteContact(id);
+    this.showAll();
+  }
+
+  sortToggle(){
+    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
     this.showAll();
   }
 }

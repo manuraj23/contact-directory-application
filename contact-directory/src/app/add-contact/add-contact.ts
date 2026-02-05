@@ -13,7 +13,8 @@ import { isPossiblePhoneNumber, isValidPhoneNumber } from 'libphonenumber-js';
   styleUrl: './add-contact.css',
 })
 export class AddContact {
-  countryCodeList:any
+  countryCodeList:any;
+  phoneExists : boolean = false;
   constructor(private contacts:Contacts , private countryCode:CountryCode){}
 
   ngOnInit(){
@@ -27,8 +28,16 @@ export class AddContact {
   }
 
   save(form: NgForm, contact: Contact){
+    if(!this.contacts.isPhoneNoUnique(contact.countryCode+contact.phoneNo)){
+      this.phoneExists = true;
+      this.reset(form);
+      return;
+    }
+    contact.id = crypto.randomUUID();
     this.contacts.addContact(contact);
     this.reset(form);
+    this.phoneExists = false;
+    return;
   }
 
   reset(form: NgForm){

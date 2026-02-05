@@ -28,6 +28,8 @@
 
 .title{
     border-bottom: 1px solid #6D94C5;
+    display: flex;
+    align-items: center;
 }
 
 .listcontacts{
