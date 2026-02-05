@@ -45,7 +45,7 @@ div {
   color: #666;
   margin-top: 10px;
 }
-button {
+.delete{
   padding: 8px 15px;
   font-size: 12px;
   background-color: #e61414ce;
@@ -56,4 +56,22 @@ button {
   transition: 0.2s;
 }
 
- 
+.flip {
+  padding: 1px 18px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+
+  color: black;
+  background: #7cce503b;
+  transition: all 0.25s ease;
+}
+.flip:hover{
+  background-color: #7cce50c5;
+}
+.flip::before {
+  content: "↕";
+  font-weight: bold;
+}

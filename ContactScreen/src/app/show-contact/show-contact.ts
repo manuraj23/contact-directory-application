@@ -14,6 +14,7 @@ export class ShowContact {
 
   searchName = '';
   searchPhone = '';
+  reversed = false;
 
   constructor(public contactService: Contact) {}
 
@@ -40,5 +41,9 @@ export class ShowContact {
 
   delete(contact: ContactModel) {
     this.contactService.deleteContact(contact);
+  }
+
+  reverse() {
+    this.reversed = !this.reversed;
   }
 }

@@ -18,26 +18,43 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Name <button  class="flip" (click)="reverse()"></button></th>
         <th>Phone</th>
         <th>Code + Country</th>
         <th>Actions</th>
       </tr>
     </thead>
 
-    <tbody>
+    @if(reversed){
+       <tbody>
       @for(c of filteredContacts; track c){
         <tr>
           <td>{{c.name}}</td>
           <td>{{c.phone}}</td>
           <td>{{c.country}}</td>
           <td>
-            <button type="button" (click)="delete(c)">
+            <button class="delete" type="button" (click)="delete(c)">
               Delete
             </button>
           </td>
         </tr>
       }
     </tbody>
+    }@else {
+       <tbody>
+      @for(c of filteredContacts.slice().reverse(); track c){
+        <tr>
+          <td>{{c.name}}</td>
+          <td>{{c.phone}}</td>
+          <td>{{c.country}}</td>
+          <td>
+            <button class="delete" type="button" (click)="delete(c)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+    }
   </table>
 }
