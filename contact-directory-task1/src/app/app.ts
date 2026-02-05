@@ -43,6 +43,7 @@ ngOnInit() {
 
 onSubmit(){
   if(this.contactForm.invalid){
+    alert("Invalid Contact details");
     return;
   }
   const formdata=this.contactForm.value;
