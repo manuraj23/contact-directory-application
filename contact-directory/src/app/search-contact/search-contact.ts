@@ -32,4 +32,8 @@ export class SearchContact {
     }
   }
   
+  delete(id: string) {
+    this.contacts.deleteContact(id);
+    this.showAll();
   }
+}

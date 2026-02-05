@@ -19,11 +19,16 @@ export class Contacts {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
   }
 
-   searchContacts(term: string): Contact[] {
+  searchContacts(term: string): Contact[] {
     const lower = term.toLowerCase();
 
-    return this.getContacts().filter(c =>
-      c.name.toLowerCase().includes(lower)
+    return this.getContacts().filter(cont =>
+      cont.name.toLowerCase().includes(lower)
     );
+  }
+
+  deleteContact(id: string) {
+    const contacts = this.getContacts().filter(cont => cont.id !== id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
   }
 }

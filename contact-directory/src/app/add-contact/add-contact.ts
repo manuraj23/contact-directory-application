@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Contacts } from '../services/contacts';
 import { Contact } from '../model/contact.model';
 import { CommonModule } from '@angular/common';
+import { isPossiblePhoneNumber, isValidPhoneNumber } from 'libphonenumber-js';
 
 @Component({
   selector: 'app-add-contact',
@@ -32,5 +33,11 @@ export class AddContact {
 
   reset(form: NgForm){
     form.resetForm();
+  }
+
+  validNumber(countryCode: string, phoneNo: string):boolean{
+    const number = countryCode+phoneNo;
+    console.log(number);
+    return (isPossiblePhoneNumber(number) && isValidPhoneNumber(number));
   }
 }

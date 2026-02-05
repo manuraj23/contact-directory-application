@@ -32,10 +32,15 @@
 
 .listcontacts{
     background-color: #CBDCEB;
-    padding: 5px;
     width: 500px;
     margin: 5px;
     padding: 20px;
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+.name-number{
     display: flex;
     flex-direction: column;
 }
@@ -48,4 +53,16 @@
 
 .numberstyle{
     margin-top: 2px;
+}
+
+.buttonstyle{
+    background: transparent;
+    justify-content: center;
+    color: #3f5672;
+    margin-left: auto;
+    cursor: pointer;
+    align-items:center;
+    width: auto;
+    height: 40px;
+    border: 0px;
 }

@@ -11,7 +11,7 @@
                 <label for="PhoneNo">Phone Number: </label>
                 <select id="PhoneNo" type="number" name="countryCode" ngModel required>
                     <option></option>
-                    <option *ngFor="let code of countryCodeList">{{code.dial_code}}</option>
+                    <option *ngFor="let code of countryCodeList" [value]="code.dial_code">{{code.code}}  {{code.dial_code}}</option>
                 </select>
                 <input id="PhoneNo" name="phoneNo" ngModel required minlength="10">
             </div>

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <div class="container">
 <div class="searchcontainer">
     <div class="search">
@@ -10,8 +12,11 @@
     </div>
     <div class="viewcontacts">
         <div *ngFor = 'let contact of contactList' class="listcontacts">
-            <p class="namestyle">{{contact.name}}</p>
-            <p class="numberstyle">{{contact.countryCode}} {{contact.phoneNo}}</p>
+            <div class="name-number">
+                <p class="namestyle">{{contact.name}}</p>
+                <p class="numberstyle">{{contact.countryCode}} {{contact.phoneNo}}</p>
+            </div>
+            <button class="buttonstyle" (click)="delete(contact.id)"><i class="material-icons">delete</i></button>
         </div>
     </div>
 </div>
