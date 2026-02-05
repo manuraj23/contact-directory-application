@@ -1,4 +1,4 @@
-.search-input {
+/* .search-input {
   width: 100%;
   padding: 8px;
   margin-bottom: 12px;
@@ -10,4 +10,57 @@
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 6px;
+} */
+
+h2 {
+  text-align: center;
+  margin-bottom: 16px;
 }
+
+.search-input {
+  width: 90%;
+  display: block;
+  margin: 0 auto 20px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.contact-card {
+  width: 90%;
+  margin: 0 auto 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.contact-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.contact-card p {
+  margin: 2px 0;
+  font-size: 14px;
+}
+.sort-dropdown {
+  width: 90%;
+  display: block;
+  margin: 0 auto 12px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.sort-dropdown:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+

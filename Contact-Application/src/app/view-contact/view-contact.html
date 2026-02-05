@@ -1,5 +1,8 @@
 <h2>View Contact</h2>
-
+<select [(ngModel)]="sortOrder" class="sort-dropdown">
+  <option value="asc">Name: A → Z</option>
+  <option value="desc">Name: Z → A</option>
+</select>
 <input
   type="text"
   placeholder="Search by name or number"
@@ -7,14 +10,20 @@
   class="search-input"
 />
 
-@if (filteredContacts.length === 0) {
-  <p>No contacts found</p>
-}
+<div *ngFor="let contact of filteredContacts" class="contact-card">
+  <p><strong>{{ contact.name }}</strong></p>
+  <p>{{ contact.countryCode }} {{ contact.mobileNumber }}</p>
+</div>
 
+<div *ngIf="filteredContacts.length === 0">
+  No contacts found
+</div>
+
+<!-- <br><hr><br>
 @for (user of filteredContacts; track user.id) {
   <div class="contact-card">
     <h3>Name: {{ user.name }}</h3>
     <p>Country Code: {{ user.countryCode }}</p>
     <p>Mobile Number: {{ user.mobileNumber }}</p>
   </div>
-}
+} -->

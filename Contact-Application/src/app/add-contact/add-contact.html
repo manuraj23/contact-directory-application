@@ -1,10 +1,36 @@
 <h2>Add Contact</h2>
-<div>
+<div class="form-container">
     <input type="text" placeholder="Enter Name" name="name" [formControl]="name">
-    <br><br>
-    <input type="text" placeholder="Enter Country Code" name="countryCode" [formControl]="countryCode">
-    <br><br>
-    <input type="text" placeholder="Enter Phone Number" name="phoneNumber" [formControl]="phoneNumber">
-    <br><br>
-    <button (click)="addContact()">Add Contact</button>
+    @if (name.touched && name.hasError('required')) {
+    <div class="error">Name is required.</div>
+    }
+    <div class="phone-row">
+        <select [formControl]="countryCode">
+            <option value="">Select Country Code</option>
+            @for (country of countryCodes; track country.dial_code) {
+            <option [value]="country.dial_code">
+                {{ country.name }} ({{ country.dial_code }})
+            </option>
+            }
+        </select>
+        @if (countryCode.touched && countryCode.hasError('required')) {
+        <div class="error">Country code is required.</div>
+        }
+        <input type="text" placeholder="Enter Phone Number" name="phoneNumber" [formControl]="phoneNumber">
+        @if (phoneNumber.touched && phoneNumber.hasError('invalidLength')) {
+        <div class="error">
+            @if (countryCode.value === '+251') {
+            Phone number must be exactly 9 digits.
+            }
+            @else if (['+91', '+1', '+7', '+86', '+33'].includes(countryCode.value)) {
+            Phone number must be exactly 10 digits.
+            }
+            @else {
+            Phone number must be between 8 and 12 digits.
+            }
+        </div>
+        }
+    </div>
+    <button (click)="addContact()" [disabled]="name.invalid || countryCode.invalid || phoneNumber.invalid">Add
+        Contact</button>
 </div>

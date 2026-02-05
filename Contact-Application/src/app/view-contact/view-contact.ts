@@ -13,27 +13,43 @@ import { FormsModule } from '@angular/forms';
 export class ViewContact {
   contactData: any[] = [];
   searchText: string = '';
+  sortOrder: 'asc' | 'desc' = 'asc';
 
-  constructor(private view: View) {}
+  constructor(private view: View) { }
 
   ngOnInit() {
     this.view.viewContact().subscribe((data: any[]) => {
       this.contactData = data;
-      console.log('Contact data:', data);
+      // console.log('Contact data:', data);
     });
   }
 
+
+
+
   get filteredContacts() {
-    if (!this.searchText) {
-      return this.contactData;
+    let contacts = this.contactData;
+
+    // 🔍 Search
+    if (this.searchText.trim() !== '') {
+      const search = this.searchText.toLowerCase();
+      contacts = contacts.filter(contact =>
+        contact.name.toLowerCase().includes(search) ||
+        contact.mobileNumber.includes(search)
+      );
     }
 
-    const search = this.searchText.toLowerCase();
+    // 🔃 Sort
+    contacts = [...contacts].sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
 
-    return this.contactData.filter(user =>
-      user.name.toLowerCase().includes(search) ||
-      user.mobileNumber.toString().includes(search) ||
-      user.countryCode.toLowerCase().includes(search)
-    );
+      return this.sortOrder === 'asc'
+        ? nameA.localeCompare(nameB)
+        : nameB.localeCompare(nameA);
+    });
+
+    return contacts;
+
   }
 }
