@@ -37,8 +37,10 @@
      @if(showall===true){
       @for(contact of contacts; track contact){
       <div class="result">
-      <h2>{{contact['name']}}</h2>
-      <h3>{{contact['code']}} {{contact['phone']}}</h3>
+      <ul>
+      <li>{{contact['name']}}</li>
+      <li>{{contact['code']}} {{contact['phone']}}</li>
+      </ul>
       </div>
      }
     }
@@ -46,8 +48,10 @@
      @if(showall===false){   
      @for(search of searchedcontact; track search){
       <div class="result">
-      <h2>{{search['name']}}</h2>
-      <h3>{{search['code']}} {{search['phone']}}</h3>
+      <ul>
+      <li>{{search['name']}}</li>
+      <li>{{search['code']}} {{search['phone']}}</li>
+      </ul>
       </div>
      }
     }
