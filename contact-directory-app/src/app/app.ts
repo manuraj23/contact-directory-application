@@ -79,6 +79,16 @@ export class App {
     }
   }
   filteredContacts: ContactData[] = [];
+  sortAsc = 1;
+
+  changeSortingOrder(){
+    if(this.sortAsc == -1){
+      this.sortAsc = 1;
+    } else {
+      this.sortAsc = -1;
+    }
+    this.searchContacts();
+  }
 
   getFilteredContacts(): ContactData[] {
     let numPattern = this.counCode?.value + '-' + this.contactNum?.value;
@@ -88,7 +98,7 @@ export class App {
       (contact) =>
         this.isSubsequence(namePattern, contact.contactName.toLowerCase()) &&
         this.isSubsequence(numPattern, contact.contactId),
-    );
+    ).sort((a,b) => this.sortAsc*((a.contactName.toLowerCase()).localeCompare(b.contactName.toLowerCase())));
   }
 
   searchContacts() {
@@ -116,6 +126,8 @@ export class App {
 
   ngOnInit() {
     this.setCounCodes();
+    this.searchContacts();
+
 
     this.contactName?.valueChanges.subscribe((value) => {
       this.searchContacts();
@@ -124,7 +136,6 @@ export class App {
     this.counCode?.valueChanges.subscribe((value) => {
       let counDetails = this.countryCodes.filter((x) => x.counDialCode === this.counCode?.value)
       let contact = (this.counCode?.value ?? '').concat(this.contactNum?.value ?? '');
-      console.log(contact, counDetails[0].counCode);
       this.validNumber = this.validateNumber(contact, counDetails[0].counCode);
       console.log(this.validNumber);
       this.searchContacts();
@@ -133,7 +144,6 @@ export class App {
     this.contactNum?.valueChanges.subscribe((value) => {
       let counDetails = this.countryCodes.filter((x) => x.counDialCode === this.counCode?.value)
       let contact = (this.counCode?.value ?? '').concat(this.contactNum?.value ?? '');
-      console.log(contact, counDetails[0].counCode);
       this.validNumber = this.validateNumber(contact, counDetails[0].counCode);
       console.log(this.validNumber);
       this.searchContacts();

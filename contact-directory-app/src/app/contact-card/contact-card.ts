@@ -19,6 +19,7 @@ export class ContactCard {
       this.buttonText = 'Copy';
     }, 1500);
   }
+  
   deleteContact(key: string) {
     if (key !== '') {
       if (confirm('Do you want to delete the contact?')) {
