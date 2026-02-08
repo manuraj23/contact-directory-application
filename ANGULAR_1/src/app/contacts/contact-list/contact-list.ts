@@ -21,6 +21,9 @@ export class ContactListComponent implements OnInit {
 
   // Search input value
   searchText: string = '';
+  //sort format
+  sortOrder: 'asc' | 'desc' = 'asc'; // default A → Z
+
 
  constructor(
   private contactService: ContactService,
@@ -36,6 +39,19 @@ export class ContactListComponent implements OnInit {
   loadContacts(): void {
     this.contacts = this.contactService.getContacts();
   }
+  get sortedContacts(): Contact[] {
+  return [...this.contacts].sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+
+    if (this.sortOrder === 'asc') {
+      return nameA.localeCompare(nameB);
+    } else {
+      return nameB.localeCompare(nameA);
+    }
+  });
+}
+
   editContact(contact: Contact): void {
   this.contactService.setContactToEdit(contact);
   this.router.navigate(['/add']);

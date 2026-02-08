@@ -1,5 +1,16 @@
 <h2>Contact List</h2>
 
+<div class="sort-buttons">
+  <button (click)="sortOrder = 'asc'">
+    Sort A → Z
+  </button>
+
+  <button (click)="sortOrder = 'desc'">
+    Sort Z → A
+  </button>
+</div>
+
+
 <!-- Search box -->
 <input
   type="text"
@@ -15,7 +26,7 @@
 
 <!-- Contact list -->
 <ul>
-  <li *ngFor="let contact of contacts">
+  <li *ngFor="let contact of sortedContacts">
     <strong>{{ contact.name }}</strong><br />
     {{ contact.countryCode }} {{ contact.phone }}
     <button (click)="editContact(contact)">Edit</button>
