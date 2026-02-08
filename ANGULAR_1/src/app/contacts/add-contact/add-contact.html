@@ -29,12 +29,16 @@
 
   <!-- Phone -->
   <input
-  type="number"
+  type="text"
   placeholder="Phone Number"
   [(ngModel)]="contact.phone"
   name="phone"
   required
 />
+<!--  Phone validation error message -->
+  <div *ngIf="phoneError" style="color: red; font-size: 12px;">
+    {{ phoneError }}
+  </div>
 
 
   <button type="submit" [disabled]="contactForm.invalid">

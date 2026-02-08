@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { ContactService } from '../contact';
 import { Contact } from '../contact.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-contact-list',
@@ -20,7 +22,10 @@ export class ContactListComponent implements OnInit {
   // Search input value
   searchText: string = '';
 
-  constructor(private contactService: ContactService) {}
+ constructor(
+  private contactService: ContactService,
+  private router: Router
+) {}
 
   // Runs when component loads
   ngOnInit(): void {
@@ -31,6 +36,16 @@ export class ContactListComponent implements OnInit {
   loadContacts(): void {
     this.contacts = this.contactService.getContacts();
   }
+  editContact(contact: Contact): void {
+  this.contactService.setContactToEdit(contact);
+  this.router.navigate(['/add']);
+}
+
+deleteContact(id: number): void {
+  this.contactService.deleteContact(id);
+  this.loadContacts();
+}
+
 
   // Called whenever user types in search box
   onSearch(): void {

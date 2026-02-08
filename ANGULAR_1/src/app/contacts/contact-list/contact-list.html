@@ -18,6 +18,8 @@
   <li *ngFor="let contact of contacts">
     <strong>{{ contact.name }}</strong><br />
     {{ contact.countryCode }} {{ contact.phone }}
+    <button (click)="editContact(contact)">Edit</button>
+  <button (click)="deleteContact(contact.id)">Delete</button>
   </li>
 </ul>
 
