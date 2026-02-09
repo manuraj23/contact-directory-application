@@ -1,19 +1,19 @@
 <h2>Apply Leave / WFH</h2>
 
-<form (ngSubmit)="applyRequest()">
+<form #loginForm="ngForm" (ngSubmit)="applyRequest(loginForm, loginForm.value)">
 
-    <select [(ngModel)]="form.type" name="type" required>
+    <select #type="ngModel" name="type" required ngModel>
         <option value="">Select Type</option>
         <option value="LEAVE">Leave</option>
         <option value="WFH">Work From Home</option>
     </select><br><br>
 
-    <input type="date" [(ngModel)]="form.fromDate" name="fromDate" required /><br><br>
-    <input type="date" [(ngModel)]="form.toDate" name="toDate" required /><br><br>
+    <input type="date" #fromDate="ngModel" name="fromDate" required ngModel /><br><br>
+    <input type="date" #toDate="ngModel" name="toDate" required ngModel /><br><br>
 
-    <textarea placeholder="Reason" [(ngModel)]="form.reason" name="reason" required></textarea><br><br>
+    <textarea placeholder="Reason" #reason="ngModel" name="reason" ngModel required></textarea><br><br>
 
-    <button type="submit">Apply</button><br><br>
+    <button type="submit" [disabled]="loginForm.invalid">Apply</button><br><br>
 </form>
 
 <hr />
@@ -26,6 +26,7 @@
         <th>From</th>
         <th>To</th>
         <th>Status</th>
+        <th>Action</th>
     </tr>
 
     <tr *ngFor="let req of myRequests">
@@ -33,5 +34,6 @@
         <td>{{ req.fromDate }}</td>
         <td>{{ req.toDate }}</td>
         <td> {{ req.status }} </td>
+        <td> <button *ngIf="req.status === 'Pending'" (click)="cancelRequest(req.reqid)">Cancel</button></td>
     </tr>
 </table>

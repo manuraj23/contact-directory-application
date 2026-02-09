@@ -26,6 +26,7 @@ export class Requests {
     this.allRequests = JSON.parse(
       localStorage.getItem('leaveRequests') || '[]'
     );
+    this.allRequests = this.allRequests.filter((r:any) => r.status!=='Cancelled');
   }
 
   updateStatus(id: string, status: 'Approved' | 'Rejected') {
