@@ -17,8 +17,6 @@ export class Projects {
     this.userId = user.id;
 
     this.userProjects = this.getUserProjects(this.userId);
-    console.log(this.userProjects);
-    console.log(Array.isArray(this.userProjects));
   }
 
   getUserProjects(userId:any){

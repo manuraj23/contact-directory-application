@@ -7,15 +7,15 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Status</th>
+      <th>Date</th>
+      <th>Status</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let a of attendance">
       <td>{{ a.date }}</td>
       <td>
-        <span [ngClass]="a.status">{{ a.status }}</span>
+        <span>{{ a.status }}</span>
       </td>
     </tr>
   </tbody>

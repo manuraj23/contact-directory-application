@@ -1,8 +1,7 @@
 <div>
     <h3>My Projects</h3>
     <ul>
-        <li *ngFor="let project of userProjects" (click)="selectProject(project)"
-            [class.active]="project.pid === selectedProject?.pid">
+        <li *ngFor="let project of userProjects" (click)="selectProject(project)" style="cursor: pointer;">
             {{ project.name }}
         </li>
     </ul>
