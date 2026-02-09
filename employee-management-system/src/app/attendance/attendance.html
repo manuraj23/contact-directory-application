@@ -1,26 +1,22 @@
-<div>
+<ul>
+  <li>Present: {{ summary.present }}</li>
+  <li>WFH: {{ summary.wfh }}</li>
+  <li>Leave: {{ summary.leave }}</li>
+</ul>
 
-  <div>
-    <div>Present: {{ summary.present }}</div>
-    <div>WFH: {{ summary.wfh }}</div>
-    <div>Leave: {{ summary.leave }}</div>
-  </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let a of attendance">
-        <td>{{ a.date }}</td>
-        <td>
-          <span [ngClass]="a.status">{{ a.status }}</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of attendance">
+      <td>{{ a.date }}</td>
+      <td>
+        <span [ngClass]="a.status">{{ a.status }}</span>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,9 @@
+ul{
+    display: flex;
+    list-style: none;
+    padding-right: 30px;
+}
+
+li{
+    padding: 10px;
+}

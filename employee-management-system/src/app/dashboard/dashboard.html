@@ -1,14 +1,14 @@
-<nav>
-    <h3>Employee Management System</h3>
-    <ul>
-        <li *ngFor="let menu of filteredMenu">
-            <a [routerLink]="menu.path">{{menu.text}}</a>
-        </li>
-    </ul>
-</nav>
-
+<div class="navbar">
+    <nav>
+        <h3>Employee Management System</h3>
+        <ul>
+            <li *ngFor="let menu of filteredMenu">
+                <a [routerLink]="menu.path">{{menu.text}}</a>
+            </li>
+        </ul>
+    </nav>
+</div>
 <hr>
-
 <div>
     <router-outlet></router-outlet>
 </div>
