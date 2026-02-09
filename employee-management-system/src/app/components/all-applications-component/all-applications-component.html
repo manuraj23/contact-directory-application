@@ -1,0 +1,68 @@
+<div>
+  <div class="grid grid-cols-12 min-w-fit gap-4 mb-3">
+    <div class="font-bold capitalize col-span-1">id</div>
+    <div class="font-bold capitalize col-span-1">By</div>
+    <div class="font-bold capitalize col-span-1">type</div>
+    <div class="font-bold capitalize col-span-4">reason</div>
+    <div class="font-bold capitalize col-span-1">from</div>
+    <div class="font-bold capitalize col-span-1">to</div>
+    <div class="font-bold capitalize col-span-1">Status</div>
+    <div class="font-bold capitalize col-span-2 text-center">Actions</div>
+  </div>
+  @for (allApplication of allApplications(); track allApplication.id) {
+    <div class="grid grid-cols-12 min-w-fit gap-4">
+      <div class="capitalize font-light col-span-1">{{ allApplication.id }}</div>
+      <div class="font-light col-span-1">{{ allApplication.appliedBy }}</div>
+      <div class="capitalize font-light col-span-1">{{ allApplication.type }}</div>
+      <div class="capitalize font-light col-span-4">{{ allApplication.reason }}</div>
+      <div class="capitalize font-light col-span-1">{{ allApplication.from }}</div>
+      <div class="capitalize font-light col-span-1">{{ allApplication.to }}</div>
+      <div class="capitalize font-light col-span-1">{{ allApplication.status }}</div>
+      <div class="capitalize font-light col-span-1 py-2 px-1 text-center">
+        <button
+          class="bg-green-600 text-white font-semibold text-center rounded px-2 py-1"
+          (click)="approveApplication(allApplication.id)"
+        >
+          Approve
+        </button>
+      </div>
+      <div class="capitalize font-light col-span-1 py-2 px-1 text-center">
+        <button
+          class="bg-red-600 text-white font-semibold text-center rounded px-2 py-1"
+          (click)="declineApplication(allApplication.id)"
+        >
+          Decline
+        </button>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="w-full py-3">
+  <p class="text-sky-600 text-xl font-bold text-center">Reviewed Requests</p>
+</div>
+
+@if(allReviewdApplications().length!=0) {
+  <div class="mt-12">
+    <div class="grid grid-cols-10 min-w-fit gap-4 mb-3">
+      <div class="font-bold capitalize col-span-1">id</div>
+      <div class="font-bold capitalize col-span-1">By</div>
+      <div class="font-bold capitalize col-span-1">type</div>
+      <div class="font-bold capitalize col-span-4">reason</div>
+      <div class="font-bold capitalize col-span-1">from</div>
+      <div class="font-bold capitalize col-span-1">to</div>
+      <div class="font-bold capitalize col-span-1">Status</div>
+    </div>
+    @for (allApplication of allReviewdApplications(); track allApplication.id) {
+      <div class="grid grid-cols-10 min-w-fit gap-4">
+        <div class="capitalize font-light col-span-1">{{ allApplication.id }}</div>
+        <div class="font-light col-span-1">{{ allApplication.appliedBy }}</div>
+        <div class="capitalize font-light col-span-1">{{ allApplication.type }}</div>
+        <div class="capitalize font-light col-span-4">{{ allApplication.reason }}</div>
+        <div class="capitalize font-light col-span-1">{{ allApplication.from }}</div>
+        <div class="capitalize font-light col-span-1">{{ allApplication.to }}</div>
+        <div class="capitalize font-light col-span-1">{{ allApplication.status }}</div>
+      </div>
+    }
+  </div>
+}

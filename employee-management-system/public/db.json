@@ -1,0 +1,62 @@
+[
+  {
+    "id": "u1",
+    "name": "Amit Sharma",
+    "password":"pass",
+    "projects": ["HR Portal", "Employee Dashboard"],
+    "attendance": 92,
+    "leavesLeft": 10,
+    "wfhLeft": 4,
+    "roles": ["HR"]
+  },
+  {
+    "id": "u2",
+    "name": "Priya Verma",
+    "password":"pass",
+    "projects": ["Payroll System"],
+    "attendance": 88,
+    "leavesLeft": 5,
+    "wfhLeft": 2,
+    "roles": ["HR"]
+  },
+  {
+    "id": "u3",
+    "name": "Rahul Mehta",
+    "password":"pass",
+    "projects": ["Inventory Management", "Reporting Tool"],
+    "attendance": 95,
+    "leavesLeft": 12,
+    "wfhLeft": 6,
+    "roles": ["USER"]
+  },
+  {
+    "id": "u4",
+    "name": "Sneha Patil",
+    "password":"pass",
+    "projects": ["Recruitment Portal"],
+    "attendance": 90,
+    "leavesLeft": 7,
+    "wfhLeft": 3,
+    "roles": ["USER"]
+  },
+  {
+    "id": "u5",
+    "name": "Arjun Singh",
+    "password":"pass",
+    "projects": ["Client CRM", "Analytics Dashboard"],
+    "attendance": 85,
+    "leavesLeft": 3,
+    "wfhLeft": 1,
+    "roles": ["USER"]
+  },
+  {
+    "id": "u6",
+    "name": "Neha Gupta",
+    "password":"pass",
+    "projects": ["LMS"],
+    "attendance": 98,
+    "leavesLeft": 15,
+    "wfhLeft": 6,
+    "roles": ["USER"]
+  }
+]

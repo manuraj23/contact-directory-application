@@ -1,0 +1,54 @@
+<div
+  class="fixed top-0 h-1/12 bg-emerald-700 flex items-center justify-between w-full z-10 px-6 py-2"
+>
+  <a
+  routerLink="/"
+  class="logo text-3xl font-bold uppercase text-white">
+    E<span class="text-green-400">M</span>S
+  </a>
+  @if (!loggedIn()) {
+    <div class="flex justify-center items-center gap-2">
+      <a
+        routerLink="/login"
+        routerLinkActive="bg-emerald-600"
+        class="py-2 px-3 text-center text-white font-semibold rounded-lg hover:bg-emerald-600"
+        >Log in</a
+      >
+      <a
+        routerLink="/signup"
+        routerLinkActive="bg-emerald-600"
+        class="py-2 px-3 text-center text-white font-semibold rounded-lg hover:bg-emerald-600"
+        >Sign Up</a
+      >
+    </div>
+  } @else {
+    <div class="flex justify-center items-center gap-2">
+      <a
+        routerLink="/"
+        routerLinkActive="bg-emerald-600"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="py-2 px-3 text-center text-white font-semibold rounded-lg hover:bg-emerald-600"
+        >Home</a>
+      <a
+        routerLink="/profile"
+        routerLinkActive="bg-emerald-600"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="py-2 px-3 text-center text-white font-semibold rounded-lg hover:bg-emerald-600"
+        >Profile</a>
+      @for (navOption of navOptions(); track navOption.option) {
+        <a
+          [routerLink]="navOption.routingUrl"
+          routerLinkActive="bg-emerald-600"
+          class="py-2 px-3 text-center text-white font-semibold rounded-lg hover:bg-emerald-600"
+          >{{ navOption.option }}</a
+        >
+      }
+      <a
+        routerLink="/logout"
+        routerLinkActive="bg-emerald-600"
+        class="py-2 px-3 text-center text-white font-semibold rounded-lg hover:bg-emerald-600"
+        >Log Out</a
+      >
+    </div>
+  }
+</div>

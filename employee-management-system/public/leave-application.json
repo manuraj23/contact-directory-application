@@ -1,0 +1,47 @@
+[
+  {
+    "id": "REQ-1001",
+    "appliedBy": "u3",
+    "type": "LEAVE",
+    "reason": "Family function",
+    "from": "2026-02-12",
+    "to": "2026-02-14",
+    "status": "pending"
+  },
+  {
+    "id": "REQ-1002",
+    "appliedBy": "u3",
+    "type": "WFH",
+    "reason": "Internet installation at home",
+    "from": "2026-02-10",
+    "to": "2026-02-10",
+    "status": "pending"
+  },
+  {
+    "id": "REQ-1003",
+    "appliedBy": "u5",
+    "type": "LEAVE",
+    "reason": "Medical appointment",
+    "from": "2026-02-15",
+    "to": "2026-02-16",
+    "status": "pending"
+  },
+  {
+    "id": "REQ-1004",
+    "appliedBy": "u6",
+    "type": "WFH",
+    "reason": "Personal work and deliveries",
+    "from": "2026-02-11",
+    "to": "2026-02-11",
+    "status": "pending"
+  },
+  {
+    "id": "REQ-1005",
+    "appliedBy": "u3",
+    "type": "LEAVE",
+    "reason": "Vacation trip",
+    "from": "2026-02-20",
+    "to": "2026-02-25",
+    "status": "appoved"
+  }
+]

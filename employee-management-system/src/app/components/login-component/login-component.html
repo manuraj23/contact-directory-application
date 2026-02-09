@@ -1,0 +1,36 @@
+<div class="w-full h-full flex justify-center items-start">
+  <div
+    class="mt-24 border-2 border-gray-300 shadow-xl w-76 flex flex-col justify-center items-center rounded-lg"
+  >
+    <h1 class="font-bold text-grey-500 py-4 bg-sky-600 w-full text-white text-center rounded-lg">
+      Log In
+    </h1>
+    <form
+      class="flex flex-col justify-center items-center py-3 px-2 w-full"
+      [formGroup]="loginGroup"
+      (ngSubmit)="onSubmit()"
+    >
+      <input
+        type="text"
+        formControlName="userId"
+        placeholder="Enter Employee Id"
+        class="w-full h-10 px-3 py-2 rounded-lg border-2 border-gray-400/30 mt-6"
+      />
+      <input
+        type="text"
+        formControlName="password"
+        placeholder="Enter password"
+        class="w-full h-10 px-3 py-2 rounded-lg border-2 border-gray-400/30 mt-6"
+      />
+
+      <button
+        type="button"
+        [disabled]="userId?.invalid || password?.invalid"
+        (click)="validateUser()"
+        class="w-full h-10 px-3 py-2 rounded-lg bg-emerald-600 text-white text-center font-bold mt-6 hover:bg-emerald-700 cursor-pointer"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
