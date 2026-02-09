@@ -1,0 +1,18 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Employee Management System</h2>
+
+    <input
+      type="text"
+      placeholder="Username"
+      [(ngModel)]="username"
+    />
+
+    <select [(ngModel)]="role">
+      <option value="user">User</option>
+      <option value="hr">HR</option>
+    </select>
+
+    <button (click)="login()">Login</button>
+  </div>
+</div>

@@ -1,0 +1,228 @@
+<h2>User Dashboard</h2>
+
+<!-- ================= ATTENDANCE ================= -->
+<h3>Your Attendance</h3>
+
+<p *ngIf="attendanceRecords.length === 0">
+  No attendance records found.
+</p>
+
+<table *ngIf="attendanceRecords.length > 0" border="1" cellpadding="8">
+  <tr>
+    <th>Date</th>
+    <th>Status</th>
+  </tr>
+  <tr *ngFor="let record of attendanceRecords">
+    <td>{{ record.date }}</td>
+    <td>{{ record.status }}</td>
+  </tr>
+</table>
+
+<hr />
+
+<!-- ================= LEAVES ================= -->
+<h3>Apply Leave</h3>
+
+<form (ngSubmit)="applyLeave()">
+  <input
+    type="date"
+    [(ngModel)]="newLeave.fromDate"
+    name="fromDate"
+    required
+  />
+
+  <input
+    type="date"
+    [(ngModel)]="newLeave.toDate"
+    name="toDate"
+    required
+  />
+
+  <input
+    type="text"
+    placeholder="Reason"
+    [(ngModel)]="newLeave.reason"
+    name="leaveReason"
+  />
+
+  <button type="submit">Apply Leave</button>
+</form>
+
+<p *ngIf="leaves.length === 0">
+  No leaves applied.
+</p>
+
+<table *ngIf="leaves.length > 0" border="1" cellpadding="8">
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Reason</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <tr *ngFor="let leave of leaves">
+    <td>{{ leave.fromDate }}</td>
+    <td>{{ leave.toDate }}</td>
+    <td>{{ leave.reason }}</td>
+    <td>{{ leave.status }}</td>
+    <td>
+      <button
+        *ngIf="leave.status === 'Pending'"
+        (click)="cancelLeave(leave.id)"
+      >
+        Cancel
+      </button>
+    </td>
+  </tr>
+</table>
+
+<hr />
+
+<!-- ================= WFH ================= -->
+<h3>Work From Home (WFH)</h3>
+
+<form (ngSubmit)="applyWfh()">
+  <input
+    type="date"
+    [(ngModel)]="newWfh.date"
+    name="wfhDate"
+    required
+  />
+
+  <input
+    type="text"
+    placeholder="Reason"
+    [(ngModel)]="newWfh.reason"
+    name="wfhReason"
+  />
+
+  <button type="submit">Apply WFH</button>
+</form>
+
+<p *ngIf="wfhRequests.length === 0">
+  No WFH requests found.
+</p>
+
+<table *ngIf="wfhRequests.length > 0" border="1" cellpadding="8">
+  <tr>
+    <th>Date</th>
+    <th>Reason</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <tr *ngFor="let wfh of wfhRequests">
+    <td>{{ wfh.date }}</td>
+    <td>{{ wfh.reason }}</td>
+    <td>{{ wfh.status }}</td>
+    <td>
+      <button
+        *ngIf="wfh.status === 'Pending'"
+        (click)="cancelWfh(wfh.id)"
+      >
+        Cancel
+      </button>
+    </td>
+  </tr>
+</table>
+<hr />
+
+<!-- ================= PERSONAL DETAILS ================= -->
+<h3>Personal Details</h3>
+
+<form (ngSubmit)="savePersonalDetails()">
+  <!-- Username is read-only -->
+  <input
+    type="text"
+    [value]="personalDetails.username"
+    disabled
+    placeholder="Username"
+  />
+
+  <input
+    type="text"
+    [(ngModel)]="personalDetails.fullName"
+    name="fullName"
+    placeholder="Full Name"
+  />
+
+  <input
+    type="email"
+    [(ngModel)]="personalDetails.email"
+    name="email"
+    placeholder="Email"
+  />
+
+  <input
+    type="text"
+    [(ngModel)]="personalDetails.phone"
+    name="phone"
+    placeholder="Phone"
+  />
+
+  <input
+    type="text"
+    [(ngModel)]="personalDetails.department"
+    name="department"
+    placeholder="Department"
+  />
+
+  <button type="submit">Save</button>
+</form>
+<hr />
+
+<h3>Projects</h3>
+
+<!-- Add New Project -->
+<form (ngSubmit)="addProject()">
+  <input
+    type="text"
+    [(ngModel)]="newProject.name"
+    name="projectName"
+    placeholder="Project Name"
+    required
+  />
+
+  <input
+    type="text"
+    [(ngModel)]="newProject.description"
+    name="projectDesc"
+    placeholder="Description (optional)"
+  />
+
+  <select [(ngModel)]="newProject.status" name="projectStatus">
+    <option value="Not Started">Not Started</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Done">Done</option>
+  </select>
+
+  <button type="submit">Add Project</button>
+</form>
+
+<!-- Display User Projects -->
+<p *ngIf="projects.length === 0">No projects added yet.</p>
+
+<table *ngIf="projects.length > 0" border="1" cellpadding="8">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+
+  <tr *ngFor="let proj of projects">
+    <td>{{ proj.name }}</td>
+    <td>{{ proj.description }}</td>
+    <td>
+      <select [(ngModel)]="proj.status" (change)="updateProjectStatus(proj, proj.status)">
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Done">Done</option>
+      </select>
+    </td>
+    <td>
+      <button (click)="deleteProject(proj.id)">Delete</button>
+    </td>
+  </tr>
+</table>

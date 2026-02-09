@@ -1,0 +1,106 @@
+/* ======= DASHBOARD COMMON STYLES ======= */
+
+/* Body / container */
+.dashboard-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Headings */
+h2, h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Horizontal line */
+hr {
+  margin: 20px 0;
+  border: 0.5px solid #ccc;
+}
+
+/* Forms */
+form input, form select, form textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: 0.2s all;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px #007bff44;
+}
+
+/* Buttons */
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+/* Status selects in table */
+table select {
+  max-width: 150px;
+}
+
+/* Alerts */
+.alert {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  color: white;
+  background-color: #28a745; /* green success */
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 15px;
+  }
+
+  form input, form select, form textarea {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
