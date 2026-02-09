@@ -1,6 +1,11 @@
 export const BookingConstant = {
     menus: [
         {
+            path: "attendance",
+            text: "Attendance",
+            role : ['user', 'hr']
+        },
+        {
             path: "leave-wfh",
             text: "Leave/WFH",
             role : ['user']
@@ -20,5 +25,6 @@ export const BookingConstant = {
             text: "Profile",
             role : ['user', 'hr']
         }
+
     ]
 }

@@ -1,1 +1,40 @@
-<p>requests works!</p>
+<h2>Leave / WFH Requests</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Req ID</th>
+            <th>Employee</th>
+            <th>Type</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let req of allRequests">
+            <td>{{ req.reqid }}</td>
+            <td>{{ req.username }}</td>
+            <td>{{ req.type }}</td>
+            <td>{{ req.fromDate }}</td>
+            <td>{{ req.toDate }}</td>
+            <td>{{ req.reason }}</td>
+            <td [ngClass]="req.status.toLowerCase()">
+                {{ req.status }}
+            </td>
+            <td>
+                <button *ngIf="req.status === 'Pending'" (click)="updateStatus(req.id, 'Approved')">
+                    Approve
+                </button>
+
+                <button *ngIf="req.status === 'Pending'" (click)="updateStatus(req.id, 'Rejected')">
+                    Reject
+                </button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

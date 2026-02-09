@@ -1,1 +1,21 @@
-<p>projects works!</p>
+<div>
+    <h3>My Projects</h3>
+    <ul>
+        <li *ngFor="let project of userProjects" (click)="selectProject(project)"
+            [class.active]="project.pid === selectedProject?.pid">
+            {{ project.name }}
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="selectedProject">
+    <h3>{{ selectedProject.name }}</h3>
+    <p><b>Description:</b> {{ selectedProject.description }}</p>
+
+    <p><b>Tech Stack:</b></p>
+    <ul>
+        <li *ngFor="let tech of selectedProject.techstack">
+            {{ tech }}
+        </li>
+    </ul>
+</div>

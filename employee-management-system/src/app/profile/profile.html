@@ -1,1 +1,37 @@
-<p>profile works!</p>
+<div>
+
+  <h2>My Profile</h2>
+
+  <div *ngIf="!isEditMode">
+    <p><b>Name:</b> {{ profile.name }}</p>
+    <p><b>Email:</b> {{ profile.email }}</p>
+    <p><b>Phone:</b> {{ profile.phone }}</p>
+    <p><b>Department:</b> {{ profile.department }}</p>
+    <p><b>Designation:</b> {{ profile.designation }}</p>
+
+    <button (click)="edit()">Edit Profile</button>
+  </div>
+
+  <form *ngIf="isEditMode">
+    <label>Name </label>
+    <input [(ngModel)]="profile.name" name="name" /><br><br>
+
+    <label>Email </label>
+    <input [(ngModel)]="profile.email" name="email" /><br><br>
+
+    <label>Phone </label>
+    <input [(ngModel)]="profile.phone" name="phone" /><br><br>
+
+    <label>Department </label>
+    <input [(ngModel)]="profile.department" name="department" /><br><br>
+
+    <label>Designation </label>
+    <input [(ngModel)]="profile.designation" name="designation" /><br><br>
+
+    <div>
+      <button type="button" (click)="save()">Save</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+
+</div>

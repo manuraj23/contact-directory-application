@@ -4,13 +4,15 @@ export const profile: any[] = [
         "name": "Aditya Kumar",
         "email": "aditya@mail.com",
         "phone": "+91 9856412233",
-        "designation": "Software Developer"
+        "designation": "Software Developer",
+        "department": "Engineering"
     },
     {
         "id": "hr1",
         "name": "Maitri Shah",
         "email": "maitri@mail.com",
         "phone": "+91 9564417030",
-        "designation": "HR"
+        "designation": "HR",
+        "department": "Management"
     }
 ]
