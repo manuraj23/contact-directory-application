@@ -35,7 +35,7 @@ export class Requests {
     );
 
     for (let r of requests) {
-      if (r.id === id) {
+      if (r.reqid === id) {
         r.status = status;
       }
     }

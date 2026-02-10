@@ -26,11 +26,11 @@
                 {{ req.status }}
             </td>
             <td>
-                <button *ngIf="req.status === 'Pending'" (click)="updateStatus(req.id, 'Approved')">
+                <button *ngIf="req.status === 'Pending'" (click)="updateStatus(req.reqid, 'Approved')">
                     Approve
                 </button>
 
-                <button *ngIf="req.status === 'Pending'" (click)="updateStatus(req.id, 'Rejected')">
+                <button *ngIf="req.status === 'Pending'" (click)="updateStatus(req.reqid, 'Rejected')">
                     Reject
                 </button>
             </td>
