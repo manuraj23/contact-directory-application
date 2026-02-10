@@ -1,0 +1,109 @@
+<div class="dashboard-container">
+
+  <h2>Employee Dashboard</h2>
+
+  <div *ngIf="currentUser" class="personal-info">
+    <p><b>Full Name:</b> {{ currentUser.firstName }} {{ currentUser.lastName }}</p>
+    <p><b>Email:</b> {{ currentUser.email }}</p>
+    <p><b>Password:</b> {{ currentUser.password }}</p>
+    <p><b>Mobile:</b> {{ currentUser.mobile }}</p>
+    <p><b>Address:</b> {{ currentUser.address }}</p>
+    <p><b>City:</b> {{ currentUser.city }}</p>
+    <p><b>State:</b> {{ currentUser.state }}</p>
+    <p><b>Pincode:</b> {{ currentUser.pincode }}</p>
+    <p><b>Emergency Contact Name:</b> {{ currentUser.emergencyName }}</p>
+    <p><b>Emergency Contact Number:</b> {{ currentUser.emergencyMobile }}</p>
+  </div>
+
+  <hr>
+
+  <h3>My Attendance</h3>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let a of attendance">
+      <td>{{ a.date }}</td>
+      <td>{{ a.status }}</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h3>Apply for Leave / WFH</h3>
+  <form #leaveForm="ngForm" (ngSubmit)="applyLeave(leaveForm.value)" class="form-section">
+    <select name="type" ngModel required>
+      <option value="">Select Type</option>
+      <option value="Leave">Leave</option>
+      <option value="WFH">WFH</option>
+    </select>
+
+    <input type="date" name="fromDate" ngModel required>
+    <input type="date" name="toDate" ngModel required>
+    <input type="text" name="reason" ngModel placeholder="Reason" required>
+
+    <button type="submit">Apply</button>
+  </form>
+
+  <hr>
+
+  <h3>My Requests</h3>
+  <table>
+    <tr>
+      <th>Type</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Reason</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let l of leaves">
+      <td>{{ l.type }}</td>
+      <td>{{ l.fromDate }}</td>
+      <td>{{ l.toDate }}</td>
+      <td>{{ l.reason }}</td>
+      <td>{{ l.status }}</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <h3>Add Project Request</h3>
+  <form #projectForm="ngForm" (ngSubmit)="applyProject(projectForm.value)" class="form-section">
+    <input type="text" name="projectName" ngModel placeholder="Project Name" required>
+    <input type="text" name="description" ngModel placeholder="Project Description" required>
+
+    <select name="technology" ngModel required>
+      <option value="">Select Technology</option>
+      <option value="MERN">MERN</option>
+      <option value="MEAN">MEAN</option>
+      <option value="Android">Android</option>
+      <option value="iOS">iOS</option>
+      <option value="Python">Python</option>
+    </select>
+
+    <input type="text" name="team" ngModel placeholder="Team Members Emails (comma separated)">
+    <button type="submit">Add Project</button>
+  </form>
+
+  <hr>
+
+  <h3>My Project Requests</h3>
+  <table>
+    <tr>
+      <th>Project Name</th>
+      <th>Description</th>
+      <th>Technology</th>
+      <th>Team Members</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let p of projects">
+      <td>{{ p.projectName }}</td>
+      <td>{{ p.description }}</td>
+      <td>{{ p.technology }}</td>
+      <td>{{ p.team.join(', ') }}</td>
+      <td>{{ p.status }}</td>
+    </tr>
+  </table>
+
+</div>

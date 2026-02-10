@@ -1,0 +1,71 @@
+<div class="employee-container">
+
+  <h2>Employee Details</h2>
+  <button (click)="goBack()">← Back</button>
+
+  <div *ngIf="employee" class="personal-info">
+    <p><b>Full Name:</b> {{ employee.firstName }} {{ employee.lastName }}</p>
+    <p><b>Email:</b> {{ employee.email }}</p>
+    <p><b>Password:</b> {{ employee.password }}</p>
+    <p><b>Role:</b> {{ employee.role }}</p>
+    <p><b>DOB:</b> {{ employee.dob }}</p>
+    <p><b>Gender:</b> {{ employee.gender }}</p>
+    <p><b>Mobile:</b> {{ employee.mobile }}</p>
+    <p><b>Address:</b> {{ employee.address }}</p>
+    <p><b>City:</b> {{ employee.city }}</p>
+    <p><b>State:</b> {{ employee.state }}</p>
+    <p><b>Pincode:</b> {{ employee.pincode }}</p>
+    <p><b>Emergency Contact:</b> {{ employee.emergencyName }} - {{ employee.emergencyMobile }}</p>
+  </div>
+
+  <hr>
+
+  <h3>Attendance</h3>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let a of attendance">
+      <td>{{ a.date }}</td>
+      <td>{{ a.status }}</td>
+    </tr>
+  </table>
+
+  <h3>Leaves / WFH</h3>
+  <table>
+    <tr>
+      <th>Type</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Reason</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let l of leaves">
+      <td>{{ l.type }}</td>
+      <td>{{ l.fromDate }}</td>
+      <td>{{ l.toDate }}</td>
+      <td>{{ l.reason }}</td>
+      <td>{{ l.status }}</td>
+    </tr>
+  </table>
+
+  <h3>Projects</h3>
+  <table>
+    <tr>
+      <th>Project Name</th>
+      <th>Description</th>
+      <th>Technology</th>
+      <th>Team</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let p of projects">
+      <td>{{ p.projectName }}</td>
+      <td>{{ p.description }}</td>
+      <td>{{ p.technology }}</td>
+      <td>{{ p.team.join(', ') }}</td>
+      <td>{{ p.status }}</td>
+    </tr>
+  </table>
+
+</div>

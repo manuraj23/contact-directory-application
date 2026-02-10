@@ -1,0 +1,107 @@
+<h2>HR Dashboard</h2>
+
+<h3>All Employees</h3>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Action</th>
+  </tr>
+
+  <tr *ngFor="let emp of employees">
+  <td>{{ emp.firstName }} {{ emp.lastName }}</td>
+  <td>{{ emp.email }}</td>
+  <td>{{ emp.password }}</td>
+  <td>
+    <button (click)="viewEmployeeDetails(emp.email)">View</button>
+    <button (click)="deleteEmployee(emp.email)">Delete</button>
+  </td>
+</tr>
+
+</table>
+
+<hr>
+
+<h3>Leave / WFH Requests</h3>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Reason</th>
+    <th>Status</th>
+    <th>Action</th>
+    <th>Delete</th>
+  </tr>
+
+  <tr *ngFor="let l of leaves; let i = index">
+    <td>{{ l.name }}</td>
+    <td>{{ l.type }}</td>
+    <td>{{ l.fromDate }}</td>
+    <td>{{ l.toDate }}</td>
+    <td>{{ l.reason }}</td>
+    <td>{{ l.status }}</td>
+    <td>
+      <button (click)="updateLeaveStatus(i, 'Accepted')">Accept</button>
+      <button (click)="updateLeaveStatus(i, 'Rejected')">Reject</button>
+    </td>
+    <td>
+      <button (click)="deleteLeave(i)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<hr>
+
+<h3>Project Requests</h3>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Name</th>
+    <th>Project</th>
+    <th>Description</th>
+    <th>Technology</th>
+    <th>Team Members</th>
+    <th>Status</th>
+    <th>Action</th>
+    <th>Delete</th>
+  </tr>
+
+  <tr *ngFor="let p of projects; let i = index">
+    <td>{{ p.name }}</td>
+    <td>{{ p.projectName }}</td>
+    <td>{{ p.description }}</td>
+    <td>{{ p.technology }}</td>
+    <td>{{ p.team.join(', ') }}</td>
+    <td>{{ p.status }}</td>
+    <td>
+      <button (click)="updateProjectStatus(i, 'Accepted')">Accept</button>
+      <button (click)="updateProjectStatus(i, 'Rejected')">Reject</button>
+      <button (click)="updateProjectStatus(i, 'Completed')">Completed</button>
+    </td>
+    <td>
+      <button (click)="deleteProject(i)">Delete</button>
+    </td>
+  </tr>
+</table>
+
+<hr>
+
+<h3>Attendance Records</h3>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Status</th>
+  </tr>
+  <tr *ngFor="let a of attendance">
+    <td>{{ a.name }}</td>
+    <td>{{ a.date }}</td>
+    <td>{{ a.status }}</td>
+  </tr>
+</table>
